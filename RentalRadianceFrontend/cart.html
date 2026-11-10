@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #F5EBE0; color: #5C4033; }
+        .container { display: flex; flex-wrap: wrap; justify-content: center; }
+        .card { background-color: #EDEDE9; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; margin: 10px; width: 250px; text-align: center; }
+        .card img { width: 100%; height: auto; border-radius: 8px; }
+        .remove-btn { background-color: #D5BDAF; color: white; border: none; padding: 8px 12px; cursor: pointer; border-radius: 5px; }
+        .remove-btn:hover { background-color: #E3D5CA; }
+    </style>
+</head>
+<body>
+
+<h2>Your Shopping Cart</h2>
+<div class="container" id="cart-container"></div>
+
+<h3>Total: $<span id="total-price">0.00</span></h3>
+
+<script>
+// Fetch Cart Items from Database
+fetch('get_cart.php')
+    .then(response => response.json())
+    .then(data => {
+        let cartHTML = "";
+        let totalPrice = 0;
+
+        data.forEach(item => {
+            totalPrice += item.price * item.quantity;
+            cartHTML += `
+                <div class="card">
+                    <img src="${item.dress_image}" alt="${item.dress_name}">
+                    <h3>${item.dress_name}</h3>
+                    <p>Price: $${item.price}</p>
+                    <p>Quantity: ${item.quantity}</p>
+                    <button class="remove-btn" onclick="removeFromCart(${item.id})">Remove</button>
+                </div>
+            `;
+        });
+
+        document.getElementById("cart-container").innerHTML = cartHTML;
+        document.getElementById("total-price").innerText = totalPrice.toFixed(2);
+    });
+
+// Remove Item from Cart
+function removeFromCart(cart_id) {
+    fetch('remove_from_cart.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'cart_id=' + cart_id
+    })
+    .then(response => response.text())
+    .then(message => {
+        alert(message);
+        location.reload();
+    });
+}
+</script>
+
+</body>
+</html>

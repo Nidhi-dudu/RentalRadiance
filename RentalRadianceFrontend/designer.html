@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designer Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #EDEDE9;
+        }
+        .header {
+            background-color: #D5BDAF;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        .header .avatar {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            width: 50px; /* Adjust size as needed */
+            height: 50px; /* Adjust size as needed */
+            border-radius: 50%; /* Make it circular */
+            background-color: #fff; /* Fallback color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #5C4033; /* Text color */
+        }
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+        .designer-details {
+            margin-bottom: 30px;
+        }
+        .designer-details h2 {
+            color: #5C4033;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .gallery img {
+            width: calc(33.333% - 10px);
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .upload-section {
+            margin: 20px 0;
+        }
+        .upload-section input[type="file"] {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Designer Name</h1>
+        <div class="avatar" id="profileAvatar">A</div> <!-- Initials Avatar -->
+    </div>
+    <div class="container">
+        <div class="designer-details">
+            <h2>About the Designer</h2>
+            <p>Bio: A brief description about the designer, their style, and experience.</p>
+            <p>Contact: email@example.com</p>
+        </div>
+        
+        <!-- Upload Section -->
+        <div class="upload-section">
+            <input type="file" id="fileUpload" />
+            <button onclick="uploadFile()">Upload</button>
+        </div>
+
+        <h2>Designs</h2>
+        <div class="gallery">
+            <img src="design1.jpg" alt="Design 1">
+            <img src="design2.jpg" alt="Design 2">
+            <img src="design3.jpg" alt="Design 3">
+            <img src="design4.jpg" alt="Design 4">
+            <img src="design5.jpg" alt="Design 5">
+            <img src="design6.jpg" alt="Design 6">
+        </div>
+    </div>
+
+    <script>
+        // Retrieve initials from local storage
+        const initials = localStorage.getItem('initials') || 'A';
+        document.getElementById('profileAvatar').textContent = initials;
+
+        function uploadFile() {
+            const fileInput = document.getElementById('fileUpload');
+            const file = fileInput.files[0];
+            if (file) {
+                const designName = prompt("What is the name of the design?");
+                const designDescription = prompt("What is the description of the design?");
+                const additionalInfo = prompt("Any additional information you would like to provide?");
+                
+                // Handle the file upload process here
+                alert('File uploaded: ' + file.name + '\nDesign Name: ' + designName + '\nDescription: ' + designDescription + '\nAdditional Info: ' + additionalInfo);
+            } else {
+                alert('Please select a file to upload.');
+            }
+        }
+    </script>
+</body>
+</html>

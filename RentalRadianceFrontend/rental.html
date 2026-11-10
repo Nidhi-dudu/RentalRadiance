@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Radiance - Rent Dresses</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #EDEDE9;
+            color: #5C4033;
+        }
+        .header {
+            background-color: #D6CCC2;
+            color: #5C4033;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-left h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+        .header-left p {
+            margin: 5px 0 0;
+            font-size: 16px;
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+        .hero {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .hero h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #5C4033;
+        }
+        .search-bar input {
+            width: 250px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            margin-right: 20px;
+        }
+        .icon-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .icon {
+            position: relative;
+            cursor: pointer;
+        }
+        .icon img {
+            width: 40px;
+            height: auto;
+        }
+        .icon span {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: red;
+            color: white;
+            font-size: 12px;
+            border-radius: 50%;
+            padding: 3px 6px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            width: 280px;
+            overflow: hidden;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .card h3 {
+            font-size: 20px;
+            margin-top: 15px;
+        }
+        .card p {
+            font-size: 14px;
+            color: #555;
+        }
+        .card .price {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #764702;
+        }
+        .card button {
+            background-color: #D5BDAF;
+            color: #5C4033;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        .card button:hover {
+            background-color: #E3D5CA;
+        }
+        .footer {
+            background-color: #D6CCC2;
+            color: #5C4033;
+            text-align: center;
+            padding: 15px;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+    <!-- Logo & Title -->
+    <div class="header-left">
+        <img src="logo.png" alt="Logo" style="width: 50px; height: auto; margin-right: 15px; display: inline-block; vertical-align: middle;">
+        <h1 style="display: inline-block; margin: 0;">Rental Radiance</h1>
+
+        <p>Rent Your Dream Dresses for Every Occasion</p>
+    </div>
+
+    <!-- Right Section: Search, Wishlist & Cart -->
+    <div class="header-right">
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search for dresses...">
+
+        </div>
+
+        <!-- Icons: Wishlist & Cart -->
+        <div class="icon-container">
+            <!-- Wishlist Icon -->
+            <div class="icon">
+                <a href="wishlist.html">
+                    <img src="wish1.jpg" alt="Wishlist">
+                    <span id="wishlist-count">0</span>
+                </a>
+            </div>
+            
+            <!-- Cart Icon -->
+            <div class="icon">
+                <a href="cart.html">
+                    <img src="cart.png" alt="Cart">
+                    <span id="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="hero">
+    <h2>Rent Top Designer Outfits</h2>
+    <p>For weddings and special occasions at affordable prices.</p>
+</section>
+
+<!-- Dress Catalog -->
+<div class="container">
+     <!-- Dress Card 1 -->
+     <div class="card">
+        <img src="1d.jpg" alt="Dress 1">
+        <h3>lehanga</h3>
+        <p>Perfect for formal events, weddings, or special occasions.</p>
+        <p class="price">₹1700 / 3 Days</p>
+        <button onclick="addToCart('Elegant Red Dress')">Rent Now</button>
+        <button onclick="addToWishlist('Elegant Red Dress')">❤️ Wishlist</button>
+    </div>
+
+    <!-- Dress Card 2 -->
+    <div class="card">
+        <img src="2d.jpg" alt="Dress 2">
+        <h3>Glamorous Black Gown</h3>
+        <p>Designed for evening parties, galas, or cocktail events.</p>
+        <p class="price">₹2000.00 / 3 Days</p>
+        <button onclick="addToCart('Glamorous Black Gown')">Rent Now</button>
+        <button onclick="addToWishlist('Glamorous Black Gown')">❤️ Wishlist</button>
+    </div>
+
+    <!-- Dress Card 3 -->
+    <div class="card">
+        <img src="3d.jpg" alt="Dress 3">
+        <h3>Casual Summer Dress</h3>
+        <p>Comfortable and stylish for daytime events or casual gatherings.</p>
+        <p class="price">₹1660.00 / 3 Days</p>
+        <button onclick="addToCart('Casual Summer Dress')">Rent Now</button>
+        <button onclick="addToWishlist('Casual Summer Dress')">❤️ Wishlist</button>
+    </div>
+
+    <!-- Dress Card 4 -->
+    <div class="card">
+        <img src="4d.jpg" alt="Dress 4">
+        <h3>Luxurious Wedding Gown</h3>
+        <p>The perfect choice for brides looking to make a statement.</p>
+        <p class="price">₹2500.00 / 3 Days</p>
+        <button onclick="addToCart('Luxurious Wedding Gown')">Rent Now</button>
+        <button onclick="addToWishlist('Luxurious Wedding Gown')">❤️ Wishlist</button>
+    </div>
+
+    <!-- Dress Card 5 -->
+    <div class="card">
+        <img src="5d.jpg" alt="Dress 1">
+        <h3>Elegant Red Dress</h3>
+        <p>Perfect for formal events, weddings, or special occasions.</p>
+        <p class="price">₹1500/ 3 Days</p>
+        <button onclick="addToCart('Elegant Red Dress')">Rent Now</button>
+        <button onclick="addToWishlist('Elegant Red Dress')">❤️ Wishlist</button>
+    </div>
+
+    <!-- Dress Card 6 -->
+    <div class="card">
+        <img src="6d.jpg" alt="Dress 1">
+        <h3>Elegant Red Dress</h3>
+        <p>Perfect for formal events, weddings, or special occasions.</p>
+        <p class="price">₹2000 / 3 Days</p>
+        <button onclick="addToCart('Elegant Red Dress')">Rent Now</button>
+        <button onclick="addToWishlist('Elegant Red Dress')">❤️ Wishlist</button>
+    </div>
+
+    <!-- Dress Card 7 -->
+    <div class="card">
+        <img src="7d.jpeg" alt="Dress 1">
+        <h3>Elegant Red Dress</h3>
+        <p>Perfect for formal events, weddings, or special occasions.</p>
+        <p class="price">₹3500 / 3 Days</p>
+        <button onclick="addToCart('Elegant Red Dress')">Rent Now</button>
+        <button onclick="addToWishlist('Elegant Red Dress')">❤️ Wishlist</button>
+    </div>
+
+    <!-- Dress Card 8 -->
+    <div class="card">
+        <img src="8d.jpg" alt="Dress 1">
+        <h3>Elegant Red Dress</h3>
+        <p>Perfect for formal events, weddings, or special occasions.</p>
+        <p class="price">₹3000 / 3 Days</p>
+        <button onclick="addToCart('Elegant Red Dress')">Rent Now</button>
+        <button onclick="addToWishlist('Elegant Red Dress')">❤️ Wishlist</button>
+    </div>
+
+    <!-- Dress Card 9 -->
+    <div class="card">
+        <img src="9d.jpg" alt="Dress 1">
+        <h3>Elegant Red Dress</h3>
+        <p>Perfect for formal events, weddings, or special occasions.</p>
+        <p class="price">₹4000 / 3 Days</p>
+        <button onclick="addToCart('Elegant Red Dress')">Rent Now</button>
+        <button onclick="addToWishlist('Elegant Red Dress')">❤️ Wishlist</button>
+    </div>
+    <!-- Dress Card 10 -->
+    <div class="card">
+            <img src="10d.jpg" alt="Dress 1">
+            <h3>Elegant Red Dress</h3>
+            <p>Perfect for formal events, weddings, or special occasions.</p>
+            <p class="price">₹4000 / 3 Days</p>
+            <button onclick="addToCart('Elegant Red Dress')">Rent Now</button>
+            <button onclick="addToWishlist('Elegant Red Dress')">❤️ Wishlist</button>
+    </div>
+
+    <!-- Dress Card 11 -->
+    <div class="card">
+            <img src="11d.jpeg" alt="Dress 1">
+            <h3>Elegant Red Dress</h3>
+            <p>Perfect for formal events, weddings, or special occasions.</p>
+            <p class="price">₹4000 / 3 Days</p>
+            <button onclick="addToCart('Elegant Red Dress')">Rent Now</button>
+            <button onclick="addToWishlist('Elegant Red Dress')">❤️ Wishlist</button>
+    </div>
+
+    <!-- Dress Card 12 -->
+    <div class="card">
+        <img src="12d.jpeg" alt="Dress 1">
+        <h3>Elegant Red Dress</h3>
+        <p>Perfect for formal events, weddings, or special occasions.</p>
+        <p class="price">₹4000 / 3 Days</p>
+        <button onclick="addToCart('Elegant Red Dress')">Rent Now</button>
+        <button onclick="addToWishlist('Elegant Red Dress')">❤️ Wishlist</button>
+    </div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <p>&copy; 2025 Rental Radiance - All rights reserved</p>
+</div>
+
+<script>
+    // Cart & Wishlist counts
+    let cartCount = 0;
+    let wishlistCount = 0;
+
+    // Add to Cart
+    function addToCart(dressName) {
+        cartCount++;
+        document.getElementById('cart-count').innerText = cartCount;
+        alert(dressName + " has been added to your cart! Proceed to checkout.");
+    }
+
+    // Add to Wishlist
+    function addToWishlist(dressName) {
+        wishlistCount++;
+        document.getElementById('wishlist-count').innerText = wishlistCount;
+        alert(dressName + " has been added to your wishlist!");
+    }
+</script>
+
+</body>
+</html>
